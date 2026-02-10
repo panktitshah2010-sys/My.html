@@ -120,7 +120,7 @@ I loveee youu sooo muchh my babyyy 💞
 <div class="box">
 <h2>To my love & my jaan 💖</h2>
 <p>From the moment you came into my life, everything felt brighter. Your smile feels like sunshine, and your voice feels like home.</p>
-<p>My love, even when life gets hard, I promise I will always stay by your side. My jaan, you are my heart’s favorite person.</p>
+<p>My love, even when life gets hard, I promise I will always stay by your side. My jaan, you are my heart's favorite person.</p>
 <p>You are my forever Valentine 💕</p>
 </div>
 
@@ -140,8 +140,32 @@ I loveee youu sooo muchh my babyyy 💞
 function yes(){document.getElementById("message").innerHTML="YAY!! 💖";document.getElementById("surprise").style.display="block";}
 function no(){document.getElementById("message").innerHTML="Try again 😜";}
 function reveal(){document.getElementById("secret").style.display="block";}
-setInterval(()=>{const h=document.createElement("div");h.className="heart";h.innerHTML="💖";h.style.left=Math.random()*100+"vw";document.body.appendChild(h);setTimeout(()=>h.remove(),10000);},1200);
-const v=new Date("Feb 14, 2026 00:00:00").getTime();setInterval(()=>{const d=v-new Date().getTime();document.getElementById("countdown").innerHTML="⏳ "+Math.floor(d/(1000*60*60*24))+" days until Valentine’s Day 💕";},1000);
+
+// Create a fixed container for hearts to prevent layout shift
+const heartContainer = document.createElement("div");
+heartContainer.style.position = "fixed";
+heartContainer.style.top = "0";
+heartContainer.style.left = "0";
+heartContainer.style.width = "100%";
+heartContainer.style.height = "100%";
+heartContainer.style.pointerEvents = "none";
+heartContainer.style.zIndex = "1";
+document.body.appendChild(heartContainer);
+
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💖";
+  h.style.left=Math.random()*100+"vw";
+  heartContainer.appendChild(h);
+  setTimeout(()=>h.remove(),10000);
+},1200);
+
+const v=new Date("Feb 14, 2026 00:00:00").getTime();
+setInterval(()=>{
+  const d=v-new Date().getTime();
+  document.getElementById("countdown").innerHTML="⏳ "+Math.floor(d/(1000*60*60*24))+" days until Valentine's Day 💕";
+},1000);
 </script>
 
 </body>
